@@ -1,0 +1,11 @@
+you are given an array and you have to tell number of indexes with value less than k in a given range:
+
+INPUT
+first line will be n,q length of array and no of querries
+second line contain n integers
+next q lines will contain querries with format: a b k
+which mean tell number of indecies from a to b (both inclusive) which are less than k
+
+OUTPUT
+output q lines each containing single integer, the ans to query
+

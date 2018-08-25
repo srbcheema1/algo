@@ -22,36 +22,28 @@ template <typename T, typename... Args>void show(T first, Args... args){cout << 
 template<class T,class U>ostream &operator<<(ostream &os,pair<T,U> &x){return os<<x.first<<","<<x.second;}
 struct Desc{bool operator()(int a,int b){return a>b;} }desc; // for descending sort
 
+vector<int> vec(1e6);
 int temp = -1,last = -1, n = 0;
-
-int kadane(vector<int> &arr){
-    // for negative case
-    int maxx = INT_MIN;
-    for(int i=0;i<(int)arr.size();i++) maxx = max(maxx,arr[i]);
-    if(maxx <=0) return maxx;
-
-    int local_max=0,ans = 0;
-    for(int i=0;i<(int)arr.size();i++){
-        if(local_max + arr[i] <= 0) local_max = 0;
-        else local_max += arr[i];
-        ans = max(local_max,ans);
-    }
-    return ans;
-}
-
 void solve(){
-    cin>>n;
-    vector<int> vec(n);
-    for(int i=0;i<n;i++){
+    int q;
+    cin>>n>>q;
+    for(int i=1;i<=n;i++){
         cin>>vec[i];
     }
-    cout << kadane(vec) << endl;
+    while(q--){
+        int a,b,k,count = 0;
+        cin>>a>>b>>k;
+        for(int i=a;i<=b;i++){
+            if(vec[i]<k)count ++;
+        }
+        cout << count << endl;
+    }
 }
 
 signed main(){
     ios_base::sync_with_stdio(0);cin.tie(0);
     int t=1;
     // freopen("input","r",stdin);
-     cin>>t;
+    // cin>>t;
     while(t--)solve();
 }
