@@ -2,7 +2,13 @@
 #define dout if(debug) cout<<" "
 using namespace std;
 
-int debug = 0;
+#ifdef ONLINE_JUDGE
+#define DEBUG 0.0
+#else
+#define DEBUG 1
+#endif
+int debug = DEBUG;// it will take care of itself on online-judge
+
 
 typedef unsigned long long int ulli;
 typedef unsigned int ui;
