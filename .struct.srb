@@ -1,10 +1,16 @@
 ques
     - codechef
     - codeforces
+    - contests
     - hackerearth
     - hackerrank
     - intern
 algos
+    - array
+        - kadane
+        - segtrees
+    - binary_search
+        - practice_ques
     - IO
         - fast_io.cpp
         - fast_int_string.cpp
@@ -18,4 +24,8 @@ algos
         - ignore.cpp
     - strings
         - convert_int.cpp
+        - kmp
+    - tricks
+        - precision.cpp
 manual
+    - README.md
