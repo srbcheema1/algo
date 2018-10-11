@@ -36,7 +36,7 @@ struct Desc{bool operator()(int a,int b){return a>b;}}desc; // for descending so
  * to check number is prime_or not use this approach
  */
 const int range = 32000;// will calculate prime numbers till this
-vector<int> big_div(range);
+vector<int> big_div(range+9);
 vector<int> primes; // will contain all the prime numbers
 vector<int> sieve(){
     for(int i=0;i<=range;i++) big_div[i] = i;
