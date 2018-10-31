@@ -63,4 +63,6 @@ signed main(){
 /* TAGS
  * number just less than k in given range
  * numbers smaller than k in given range
+ * merge sort
+ * merge_sort
  */
