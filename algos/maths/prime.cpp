@@ -36,7 +36,7 @@ struct Desc{bool operator()(int a,int b){return a>b;}}desc; // for descending so
  * to check number is prime_or not use this approach
  */
 const int range = 32000;// will calculate prime numbers till this
-vector<int> big_div(range+9);
+vector<int> big_div(range+9); // biggest divisor of i, for primes big_div[i] == i
 vector<int> primes; // will contain all the prime numbers
 vector<int> sieve(){
     for(int i=0;i<=range;i++) big_div[i] = i;
@@ -77,10 +77,14 @@ vector<int> segmented_seive(int s,int r) {
 
 bool is_prime(int n){
     /*
-     * check upto n = 1e9 in 32000
+     * check upto `range` in O(1)
+     * check upto 1e9 in 32000
      * sqrt(1e9) < 32000 ... 31263
      * primes till 1e6 are 80,000
      */
+    if(n<2) return false;
+    if(n < range) return big_div[n] == n;
+
     for(int i=0;i<(int)primes.size() and primes[i]<=sqrt(n);i++)
         if(n%primes[i]==0)return false;
     // this loop wont execute if value of range is 32000

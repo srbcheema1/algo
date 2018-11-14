@@ -41,6 +41,7 @@ struct st{
     // by default priority queue sorts in Descending order
     // coz default priority queue is descending ....
     // we just make it fool by defining operator< in wrong direction.
+    // this will sort in ascending way
     bool operator<(const st& o)const{return val > o.val;}
 };
 
@@ -54,7 +55,7 @@ signed main(){
         q.push(st(temp,""));
     }
     while(!q.empty()){
-        st a = q.top();
+        st a = q.top();// ascending top
         q.pop();
         cout << a.val << endl;
     }
