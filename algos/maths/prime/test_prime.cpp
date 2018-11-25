@@ -35,10 +35,10 @@ struct Desc{bool operator()(int a,int b){return a>b;}}desc; // for descending so
  * there are 3432 primes till here.
  * to check number is prime_or not use this approach
  */
-const int range = 32000;// will calculate prime numbers till this
+const int range = 1e5;// will calculate prime numbers till this
 vector<int> big_div(range+9); // biggest divisor of i, for primes big_div[i] == i
 vector<int> primes; // will contain all the prime numbers
-vector<int> sieve(){
+vector<int> sieve(){// verified using assert
     for(int i=0;i<=range;i++) big_div[i] = i;
     for(int i=2;i<range;i++)
         if(big_div[i] == i)
@@ -49,6 +49,7 @@ vector<int> sieve(){
             primes.push_back(i);
     show("prime numbers till",range,":",primes.size());//3432
     show("last prime is",*primes.rbegin());//31991
+    assert(primes.size() == 9592);// for 1e5
     return primes;
 }
 
@@ -94,25 +95,56 @@ bool is_prime(int n){
 }
 
 template<class T>
-set<int> primeFactors(int a, T &primes){
+set<int> prime_factors(int a, T &primes) {
     // find prime factor of 1e9 in max 3500
     // T can be set or array of prime numbers till 32000
     set<int> f;
-    for(auto p: primes){
-        if(a<=1 and p>a)break;
-        if(a%p == 0) f.insert(p), a /= p;
+    if(a < 2) return f;
+    for(auto p: primes) {
+        if(a%p == 0) f.insert(p), a/=p;
         while(a%p == 0 and a > 1) a /= p;
     }
     if(a > 1) f.insert(a);// still if remains then its prime
     return f;
 }
 
+template<class T>
+int unique_prime_factors(int a, T &primes){// max 400
+    int ans = 0;
+    for(auto p: primes) {
+        if(p*p>a) break;
+        if(a%p == 0) ans++,a /= p;
+        //if(a%p == 0) return 0;// comment it if you dont want 0 on number with a prime twice ex: 4 = 2*2
+        while(a%p == 0) a/=p;
+    }
+    if(a>1) ans++;
+    return ans;
+}
+
+set<int> divisors(int a) {// get divisors in root(n)
+    set<int> f;
+    for(int i=1;i*i<=a;i++) {
+        if(a%i == 0) {
+            f.insert(i);
+            f.insert(a/i);
+        }
+    }
+    return f;
+}
+
 
 void solve(){
+    for(int i=0;i<10000;i++) {
+        auto a = prime_factors(i,primes);
+        cout << a.size() << endl;
+        auto b = divisors(i);
+        cout << b.size() << endl;
+    }
 }
 
 signed main(){
     sieve();
+    solve();
 }
 //manual.end
 
