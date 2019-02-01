@@ -151,5 +151,7 @@ signed main() {
     // cin>>test;
     for(int t = 1; t <= test; t++)_t = t,solve();
 }
+// a code by srbcheema1
 
+// Note this was not a question of seggie. it could have been done easily
 //https://www.codechef.com/NOV18B/problems/HMAPPY1

@@ -1,6 +1,4 @@
-from randy import rand,rand_arr,randomize,norm,norm_arr
-from srbIo import printf
-from reader import reader
+from code_tester import rand,randomize,reader
 
 args = reader()
 if(len(args)==0):

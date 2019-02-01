@@ -1,0 +1,1 @@
+usage/range_sum/simple_seggie.cpp
