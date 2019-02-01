@@ -64,7 +64,6 @@ int binary(int st,int end,vector<int> &vec, vector<int> &pre) { // return number
 }
 
 void solve(){
-    //dout << "Case #" << _t << ": " << endl;
     int n;
     cin>>n;
     vector<int> vec(1,0);
